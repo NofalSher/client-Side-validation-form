@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');  
+/* We had imported font from  font.google.com anfd had add open sans font . Normal font is sarif*/
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color:  #ecf0f1; ;  
+    /* We can go to material ui or flat ui color  to get good color combination   */
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;   
+    /* 100vh means our page is divided in 100rows and is done to center */
+    margin: 0;
+}
+.container{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px black;
+    width: 400px;
+}
+h2{
+    text-align: center;
+    margin: 0 0 20px;
+}
+.form{
+    padding: 30px 40px ;
+}
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.form-control label{
+    color: #777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control input{
+    border:2px solid #ecf0f1;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
