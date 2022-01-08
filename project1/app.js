@@ -1,8 +1,8 @@
 const form =document.getElementById("form") ; // let is a variable data that can be changed later. we will not use var to make variable. 
 const username =document.getElementById("username");
 const email =document.getElementById("email");
-const password =document.getElementById("password");
-const password2 =document.getElementById("password2");
+const password =document.getElementById("Password");
+const password2 =document.getElementById("Password2");
 
 //Function to update class and message for errors
 function showError(input,message){   // In input we will have any of username,email,password
@@ -50,7 +50,7 @@ form.addEventListener("submit",function(e){
     if(email.value==""){
         // alert("Email is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
         // alert basically shows a message . Prompt takes an input and show that 
-        showError(email,"Email is require")
+        showError(email,"Email is required")
     }
     else{
         showSuccess(email);
@@ -62,7 +62,7 @@ form.addEventListener("submit",function(e){
     if(password.value==""){
         // alert("password is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
         // alert basically shows a message . Prompt takes an input and show that 
-        showError(password,"Username is require")
+        showError(password,"Password is required")
     }
     else{
         showSuccess(password);
@@ -73,7 +73,7 @@ form.addEventListener("submit",function(e){
     if(password2.value==""){
         // alert("confirmpassword is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
         // alert basically shows a message . Prompt takes an input and show that 
-        showError(password2,"Username is require")
+        showError(password2,"Confirm Password is required")
     }
     else{
         showSuccess(password2);
