@@ -25,27 +25,23 @@ formControl.className="form-control success";
 }
 
 // Function to check if email is valid
-function isValidEmail(email){
+function checkEmail(input){
     //To check it we need a regular expression. 
     //It is difficult to code at beginner level. So we can see it from google.
 // Search javascript email regex(regular expression)
     
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
+       const re= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      if(re.test(input.value.trim())){  // trim function will remove extra spaces in code
+          showSuccess(input);
+      } else{
+        showError(input,`Please provide a valid email`)
+      }
 }
 
 
 
  
-//Event Listeners
-//creating event listener(That checks if any event is performed on page) for submit button
-form.addEventListener("submit",function(e){
-    e.preventDefault();  // To stop page from reloading on submit.
-    // console.log("Submitted");     // This will basically show submitted in console when we click submit button.This will reload page continuously. To prevent reloaded we will add preventDefault function above it 
-    // console.log(username.value);// it will give us value we enter in username textfield. 
+
 
 
 
@@ -66,16 +62,49 @@ function checkRequired(inputArray){
         });
 }
 
+ 
+//Function to check length of input field
+function checkLength(input,min,max){
+    if (input.value.length<min){
+        showError(input,`${getFieldId(input)} needs to be at least ${min} characters`)
+    }
+    else if (input.value.length>max){
+        showError(input,`${getFieldId(input)} needs to be less than  ${max} characters`)
+    }
+    else{
+        showSuccess(input);
+    }
+}
+
+
+//Function to check if password and confirm password matches
+function checkPasswordMatch(input1,input2){
+    if(input1.value!==input2.value){
+        showError(input2,"Confirm Password must macthes password")
+    }
+}
+
+
 // Function to get id of input field in sentence case format
 function getFieldId(input){
     return input.id.charAt(0).toUpperCase()+input.id.slice(1);
 }
 
-
+//Event Listeners
+//creating event listener(That checks if any event is performed on page) for submit button
+form.addEventListener("submit",function(e){
+    e.preventDefault();  // To stop page from reloading on submit.
+    // console.log("Submitted");     // This will basically show submitted in console when we click submit button.This will reload page continuously. To prevent reloaded we will add preventDefault function above it 
+    // console.log(username.value);// it will give us value we enter in username textfield. 
     // Check if field meets current field requirement
     
    // We will make a function where we can check validity of all variable at a time
     checkRequired([username,email,password,password2])
+    checkLength(username,3,10)  //minimum value is 3 and maximum is 10
+    checkLength(password,6,30)
+    checkEmail(email);
+
+    checkPasswordMatch(password,password2);
 
 
 });  // when ever we will click submit button html will generate event of submit and will store that in function(e){}
