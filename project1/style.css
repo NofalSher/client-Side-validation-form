@@ -105,9 +105,9 @@ h2{
 }
 .Home{
     cursor: pointer;
-   background-color: rgb(185, 231, 16);
+   background-color: rgb(201, 219, 136);
    color: white; 
-   border: 2px solid rgb(185, 231, 16);
+   border: 2px solid rgb(201, 219, 136);
    border-radius: 5px;
    display: block;
    font-size: 16px;
@@ -120,6 +120,8 @@ h2{
     cursor: pointer;
    background-color: rgb(185, 231, 16);
    color: white; 
+   font-size: 20px !important;
+   font-weight: bold;
    border: 2px solid rgb(185, 231, 16);
    border-radius: 5px;
    display: block;
