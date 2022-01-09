@@ -24,6 +24,22 @@ formControl.className="form-control success";
 
 }
 
+// Function to check if email is valid
+function isValidEmail(email){
+    //To check it we need a regular expression. 
+    //It is difficult to code at beginner level. So we can see it from google.
+// Search javascript email regex(regular expression)
+    
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+}
+
+
+
+ 
 //Event Listeners
 //creating event listener(That checks if any event is performed on page) for submit button
 form.addEventListener("submit",function(e){
@@ -51,6 +67,9 @@ form.addEventListener("submit",function(e){
         // alert("Email is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
         // alert basically shows a message . Prompt takes an input and show that 
         showError(email,"Email is required")
+    }
+    else if(!isValidEmail(email.value)){
+        showError(email,"Email is invalid")
     }
     else{
         showSuccess(email);
