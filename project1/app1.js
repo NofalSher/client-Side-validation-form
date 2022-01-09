@@ -1,3 +1,8 @@
+
+// In this file we have made long code alot of which is not as important so we will make a new file for actual code
+
+
+
 const form =document.getElementById("form") ; // let is a variable data that can be changed later. we will not use var to make variable. 
 const username =document.getElementById("username");
 const email =document.getElementById("email");
@@ -49,33 +54,57 @@ form.addEventListener("submit",function(e){
 
 
 
-//Function to check if required fields have data
-function checkRequired(inputArray){
-    // for this we can use a for loop. But without for loop we can use
-    //(for each) that is actually a high order array method. 
-    inputArray.forEach(function(input){
-        if(input.value==""){
-            //showError(input,input.id +" is required") // First Method
-            //showError(input,`${input.id} is required`) // Second Method
-            showError(input,`${getFieldId(input)} is required`)
-
-        }
-        else{
-            showSuccess(input);
-        }
-        });
-}
-
-// Function to get id of input field in sentence case format
-function getFieldId(input){
-    return input.id.charAt(0).toUpperCase()+input.id.slice(1);
-}
-
-
     // Check if field meets current field requirement
     
-   // We will make a function where we can check validity of all variable at a time
-    checkRequired([username,email,password,password2])
+    // Check if username is empty or not
+    if(username.value==""){
+        // alert("Username is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
+        // alert basically shows a message . Prompt takes an input and show that 
+        showError(username,"Username is require")
+    }
+    else{
+        showSuccess(username);
+    }
+
+
+    // Check if email is empty or not
+    if(email.value==""){
+        // alert("Email is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
+        // alert basically shows a message . Prompt takes an input and show that 
+        showError(email,"Email is required")
+    }
+    else if(!isValidEmail(email.value)){
+        showError(email,"Email is invalid")
+    }
+    else{
+        showSuccess(email);
+    }
+
+
+
+    // Check if password is empty or not
+    if(password.value==""){
+        // alert("password is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
+        // alert basically shows a message . Prompt takes an input and show that 
+        showError(password,"Password is required")
+    }
+    else{
+        showSuccess(password);
+    }
+
+
+    // Check if confirm password is empty or not
+    if(password2.value==""){
+        // alert("confirmpassword is required");   //This is basically giving us error. But prompt is very old and is not used mostly now a days.
+        // alert basically shows a message . Prompt takes an input and show that 
+        showError(password2,"Confirm Password is required")
+    }
+    else{
+        showSuccess(password2);
+    }
+
 
 
 });  // when ever we will click submit button html will generate event of submit and will store that in function(e){}
+
+
